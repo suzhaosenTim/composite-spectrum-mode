@@ -5,7 +5,7 @@ function polariz = asymptot_high_contrast(n,rad, epsilon1, delta)
 % numerics, particularly in high-contrast case.)
 % source: from H.Ammari, M.Putinar, 2016
 
-% n: number of expansion terms. (choose >10^6 in high contrast)
+% n: number of expansion terms. 
 % rad: radius of circle
 % epsilon1: inside permitivity.
 % delta: separating distance between two circles. 
