@@ -18,7 +18,6 @@ ntry = 1000;
 for i = 1:ninc
     placed = false;    
     chnkr_i = chunkerfunc(@(t) rad .* circle(t), cparams);
-    
     for j = 1:ntry
         tmp = (L - 2*rad)*rand(2,1);
         if isempty(ctrs)
