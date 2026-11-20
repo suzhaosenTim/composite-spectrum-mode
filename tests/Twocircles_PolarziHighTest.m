@@ -62,8 +62,8 @@ integrand = rho.*x1.';
 
 polariz_num = -(wts(:).')*integrand;
 
-n = 10^8;
-delta1 = 0.056;
+n = 400;
+delta1 = delta -2*rad ;
 
 polariz = asymptot_high_contrast(n,rad, epsilon1, delta1);      % asymptotic expansion of High contrast polarizbility
 
