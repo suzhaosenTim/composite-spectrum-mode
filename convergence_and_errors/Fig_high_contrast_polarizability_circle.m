@@ -78,8 +78,8 @@ for ii = 1: length(rel_err)
 
     polariz_num = -(wts(:).')*integrand;
 
-    n = 10^8;
-    delta1 = 0.056;
+    n = 400;
+    delta1 = delta - 2*rad;
 
     polariz = asymptot_high_contrast(n,rad, epsilon1, delta1);
 
@@ -91,7 +91,7 @@ loglog(npts(1:4), rel_err(1:4), '.-', 'LineWidth',1.5,'MarkerSize',12)
 hold on 
 loglog(npts(1:4), (10^22).*npts(1:4).^(-14), '--k', 'LineWidth',1.5)
  
-legend({'polarizbility relative error', 'n^{-14}'}, 'FontSize',12)
+legend({'polarizability relative error', 'n^{-14}'}, 'FontSize',12)
 xlabel('N', 'FontSize',12)
 ylabel('Relative error','FontSize',12)
 title('High contrast convergence test', 'FontSize',12)
@@ -112,4 +112,4 @@ set(gcf,'Position', [1100  500  1100   500])
 
 
 
-%exportgraphics(gcf,'convergence_figure_polarizbility.pdf','ContentType','vector')
+exportgraphics(gcf,'convergence_figure_polarizbility.pdf','ContentType','vector')

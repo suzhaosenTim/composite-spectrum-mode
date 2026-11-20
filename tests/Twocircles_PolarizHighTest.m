@@ -65,7 +65,7 @@ polariz_num = -(wts(:).')*integrand;
 n = 400;
 delta1 = delta -2*rad ;
 
-polariz = asymptot_high_contrast(n,rad, epsilon1, delta1);      % asymptotic expansion of High contrast polarizbility
+polariz = asymptot_high_contrast(n,rad, epsilon1, delta1);      % asymptotic expansion of High contrast polarizability
 
 rel_err = norm(polariz-polariz_num)/(norm(polariz));
 abs_err = abs(polariz - polariz_num);

@@ -1,6 +1,6 @@
 clear
 
-% the genetrating geometry is from the demo_mult_connect.m
+% the generating geometry is from the demo_mult_connect.m
 
 iseed = 8675309;
 rng(iseed,'twister');
@@ -70,7 +70,7 @@ fprintf('%5.2e s : time to discretize the integral operator\n',t1)
 
 stb = stb_multiple(chnkr_int);
 
-lhs = 0.5.*eye(chnkrs.npt) + sysmat + stb ;              % change the stabilizer construction due to different # of discretization ptss
+lhs = 0.5.*eye(chnkrs.npt) + sysmat + stb ;              
 
 rhs = -chnkrs.n(1,:).';
 

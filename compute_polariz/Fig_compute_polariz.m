@@ -1,6 +1,6 @@
 clear
 
-% the style of genetrating geometry is from the demo_mult_connect.m
+% the style of generating geometry is from the demo_mult_connect.m
 
 iseed = 8675309;
 rng(iseed,'twister');
@@ -43,7 +43,7 @@ sysmat = chunkermat(chnkrs, fkern, opts);
 t1 = toc(start);
 fprintf('%5.2e s : time to discretize the integral operator\n',t1)
 
-eps = 1e-3;
+epsi = 1e-3;
 s = linspace(0,1, 200) ;
 
 polariz_x = zeros(1, length(s));
@@ -51,7 +51,7 @@ polariz_y = zeros(1, length(s));
 x1 = chnkrs.r(1,:);
 x2 = chnkrs.r(2,:);
 for i = 1:length(s)
-    s1 = s(i) + (1e-3)*1i;
+    s1 = s(i) + epsi*1i;
     lhs = (s1- 0.5).*eye(chnkrs.npt) - sysmat;
     rhs = s1*chnkrs.n(1,:).';
     rhs2 = s1*chnkrs.n(2,:).';
@@ -79,7 +79,7 @@ plot(real(s), real(polariz_x), 'LineWidth', 2)
 hold on 
 plot(real(s), imag(polariz_x), 'LineWidth',2)
 xlabel('s-plane', 'FontSize',12)
-ylabel('Polarizbility', 'FontSize',12)
+ylabel('Polarizability', 'FontSize',12)
 legend({'Real-part', 'Imaginary part'}, 'FontSize',12)
 axis square
 pbaspect([1 1 1]) 
@@ -91,7 +91,7 @@ plot(real(s), real(polariz_y), 'LineWidth', 2)
 hold on 
 plot(real(s), imag(polariz_y), 'LineWidth',2)
 xlabel('s-plane', 'FontSize',12)
-ylabel('Polarizbility', 'FontSize',12)
+ylabel('Polarizability', 'FontSize',12)
 legend({'Real-part', 'Imaginary part'}, 'FontSize',12)
 axis square
 pbaspect([1 1 1]) 

@@ -1,6 +1,6 @@
 clear
 
-% the genetrating geometry is from the demo_mult_connect.m
+% the generating geometry is from the demo_mult_connect.m
 
 iseed = 8675309;
 rng(iseed,'twister');
