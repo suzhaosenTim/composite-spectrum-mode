@@ -2,8 +2,7 @@ clear
 
 % the style of generating geometry is from the demo_mult_connect.m
 
-iseed = 8675309;
-rng(iseed,'twister');
+
 
 
 cparams = [];
@@ -66,10 +65,16 @@ for i = 1:length(s)
     polariz_y(i) = -(chnkrs.wts(:).')*(rho2.*x2.')/s1;
 end
 
+lhs = 0.5.*eye(chnkrs.npt) + sysmat;
+mu = eig(lhs);
+iid = (mu>1e-6);
+
+spec_E = mu(iid);
+
 fig = figure;
 clf
 
-t = tiledlayout(fig,1,2, ...
+t = tiledlayout(fig,1,3, ...
     'TileSpacing','compact', ...
     'Padding','loose');
 
@@ -79,7 +84,7 @@ plot(real(s), real(polariz_x), 'LineWidth', 2)
 hold on 
 plot(real(s), imag(polariz_x), 'LineWidth',2)
 xlabel('s-plane', 'FontSize',12)
-ylabel('Polarizability', 'FontSize',12)
+ylabel('Polarizability(11)', 'FontSize',12)
 legend({'Real-part', 'Imaginary part'}, 'FontSize',12)
 axis square
 pbaspect([1 1 1]) 
@@ -91,9 +96,19 @@ plot(real(s), real(polariz_y), 'LineWidth', 2)
 hold on 
 plot(real(s), imag(polariz_y), 'LineWidth',2)
 xlabel('s-plane', 'FontSize',12)
-ylabel('Polarizability', 'FontSize',12)
-legend({'Real-part', 'Imaginary part'}, 'FontSize',12)
+ylabel('Polarizability(22)', 'FontSize',12)
+legend({'Real-part', 'Imaginary part'}, 'FontSize',12, 'Location','northwest')
 axis square
 pbaspect([1 1 1]) 
 
+nexttile
+plot(1:length(spec_E), sort(spec_E),'.', 'MarkerSize',18);
+xlabel('index', 'FontSize',12)
+ylabel('eigenvalues', 'FontSize',12)
+axis square
+pbaspect([1 1 1]) 
+
+
 set(fig, 'Units','pixels', 'Position',[50 50 1500 700]);
+
+exportgraphics(gcf,'Polarizability as a function of s.pdf','ContentType','vector')

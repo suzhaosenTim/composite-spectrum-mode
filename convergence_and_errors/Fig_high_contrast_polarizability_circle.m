@@ -112,4 +112,4 @@ set(gcf,'Position', [1100  500  1100   500])
 
 
 
-exportgraphics(gcf,'convergence_figure_polarizability.pdf','ContentType','vector')
+%exportgraphics(gcf,'convergence_figure_polarizability.pdf','ContentType','vector')
