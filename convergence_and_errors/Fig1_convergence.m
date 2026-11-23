@@ -104,9 +104,9 @@ hold on
 loglog(npts(1:8), (10^22).*npts(1:8).^(-14), '--k', 'LineWidth',2)
  
 legend({'Max eigenvalue relative error', 'Min eigenvalue relative error', 'n^{-14}'}, 'FontSize',14)
-xlabel('Discretization nodes (Total)', 'FontSize',16)
-ylabel('Relative error','FontSize',16)
-title('Convergence test', 'FontSize',16)
+xlabel('Discretization nodes (Total)', 'FontSize',12)
+ylabel('Relative error','FontSize',12)
+%title('Convergence test', 'FontSize',16)
 grid on
 axis square
 
@@ -116,11 +116,11 @@ nexttile
 plot(chnkrs,'-k', 'LineWidth',2)
 hold on 
 plot(chnkrs, 'xk', 'LineWidth',2)
-title('Inclusion geometry', 'FontSize',16)
+%title('Inclusion geometry', 'FontSize',16)
 axis equal
 pbaspect([1 1 1]) 
 
-set(gcf,'Position', [900  500  900   500])
+set(fig, 'Units','pixels', 'Position',[50 50 1200 700]);
 
 
 exportgraphics(gcf,'convergence_figure.pdf','ContentType','vector')

@@ -86,30 +86,36 @@ for ii = 1: length(rel_err)
     rel_err(ii) = norm(polariz-polariz_num)/(norm(polariz));
 end
 
+
+fig = figure;
+clf
+
+t = tiledlayout(fig,1,2, ...
+    'TileSpacing','compact', ...
+    'Padding','loose');
+
 nexttile
-loglog(npts(1:4), rel_err(1:4), '.-', 'LineWidth',1.5,'MarkerSize',12)
+loglog(npts(1:8), rel_err(1:8), '.-', 'LineWidth',2,'MarkerSize',12)
 hold on 
-loglog(npts(1:4), (10^22).*npts(1:4).^(-14), '--k', 'LineWidth',1.5)
- 
+loglog(npts(1:8), (10^22).*npts(1:8).^(-14), '--k', 'LineWidth',1.5)
+grid on
 legend({'polarizability relative error', 'n^{-14}'}, 'FontSize',12)
-xlabel('N', 'FontSize',12)
+xlabel('Discretization nodes (Total)', 'FontSize',12)
 ylabel('Relative error','FontSize',12)
-title('High contrast convergence test', 'FontSize',12)
+
 
 axis square
 
 
 
 nexttile
-plot(chnkrs,'-k', 'LineWidth',1)
+plot(chnkrs,'-k', 'LineWidth',2)
 hold on 
-plot(chnkrs, 'xk', 'LineWidth',1)
-title('Inclusion geometry', 'FontSize',12)
+plot(chnkrs, 'xk', 'LineWidth',2)
 axis equal
 pbaspect([1 1 1]) 
 
-set(gcf,'Position', [1100  500  1100   500])
+set(fig, 'Units','pixels', 'Position',[50 50 1000 700]);
 
 
-
-%exportgraphics(gcf,'convergence_figure_polarizability.pdf','ContentType','vector')
+exportgraphics(gcf,'convergence_figure_polarizability.pdf','ContentType','vector')
