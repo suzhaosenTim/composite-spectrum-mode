@@ -11,5 +11,5 @@ The main implementations here require ChunkIE: a MATLAB integral equation toolbo
 
 # Usage
 
-Make sure the helpers/ folder is added to the path.
+Make sure the helpers and geometry folder are added to the path.
 
